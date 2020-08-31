@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="fr" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <title>DMétéo</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.css">
+  <link href="https://fonts.googleapis.com/css2?family=Alata&family=Limelight&family=Rammetto+One&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/ico" href="Icones/favicon.ico"/>
+</head>
+<body>
+
+<header>
+  <div class="logo"></div>
+  <div class="header-text">
+    <h1 class="head">DMétéo</h1>
+    <h5 class="head">Votre nouvelle météo</h5>
+  </div>
+</header>
+
+<section class="content">
+  <div id="aujourdhui">
+    <h1 class="section-title auj-title">Aujourd'hui</h1>
+
+    <div class="section-content">
+      <i class="fas fa-thermometer-half"></i><span class="temp"></span><br>
+      <i class="fas fa-tint"></i><span class="precipitacions"></span><br>
+      <i class="fas fa-wind"></i><span class="vent"></span><br>
+      <i class="fas fa-water"></i><span class="humidite"></span><br>
+      <i class="fas fa-compress-alt"></i><span class="pression"></span><br>
+      <span class="neige"><i class="fas fa-snowflake"></i>Risques de neige</span>
+    </div>
+  </div>
+
+  <div id="demain">
+    <h1 class="section-title demain-title">Demain</h1>
+
+    <div class="section-content">
+      <i class="fas fa-thermometer-half"></i><span class="temp-demain"></span><br>
+      <i class="fas fa-tint"></i><span class="precipitacions-demain"></span><br>
+      <i class="fas fa-wind"></i><span class="vent-demain"></span><br>
+      <i class="fas fa-water"></i><span class="humidite-demain"></span><br>
+      <i class="fas fa-compress-alt"></i><span class="pression-demain"></span><br>
+      <span class="neige-demain"><i class="fas fa-snowflake"></i>Risques de neige</span>
+    </div>
+  </div>
+
+  <div id="ademain">
+    <h1 class="section-title ademain-title">Après demain</h1>
+
+    <div class="section-content">
+      <i class="fas fa-thermometer-half"></i><span class="temp-ademain"></span><br>
+      <i class="fas fa-tint"></i><span class="precipitacions-ademain"></span><br>
+      <i class="fas fa-wind"></i><span class="vent-ademain"></span><br>
+      <i class="fas fa-water"></i><span class="humidite-ademain"></span><br>
+      <i class="fas fa-compress-alt"></i><span class="pression-ademain"></span><br>
+      <span class="neige-ademain"><i class="fas fa-snowflake"></i>Risques de neige</span>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="change">
+    <h3 class="foot">Changer de ville</h3>
+    <input type="text" name="city" value="" placeholder="Entrez votre ID de vile" id="city">
+    <input type="submit" name="submit" value="Ok" id="submit"><br>
+    <p class="info">💡 <a href="https://halgatewood.com/docs/plugins/awesome-weather-widget/finding-city-id" target="_blank">Comment trouver mon ID de ville ?</a></p>
+  </div>
+  <h5 class="foot">© Damien STÉPHAN</h5>
+</footer>
+
+<div class="info-box">
+  <i class="fas fa-map-marked-alt marker"></i>
+  <h1>Attention !</h1>
+  <p>La météo actuellement affichée sur cette page est celle de Paris. Vous pouvez à tout momment changer de ville en vous référant au bas de la page.</p>
+  <button class="fas fa-times close-btn">
+</div>
+
+<script src="main.js" charset="utf-8"></script>
+</body>
+</html>

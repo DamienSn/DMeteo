@@ -1,0 +1,205 @@
+*{
+  margin: 0;
+  padding: 0;
+  font-family: 'Alata', cursive;
+  scroll-behavior: smooth;
+}
+
+.head, .foot {
+  font-family: 'Rammetto One';
+}
+
+body {
+  background-image: url(Images/soleil.jpg);
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+header {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  background: #3498db;
+  padding: 20px;
+}
+
+.logo {
+  width: 100px;
+  height: 100px;
+  margin-right: 30px;
+  background-image: url(Icones/icon.ico);
+  background-size: contain;
+}
+
+footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #3498db;
+  padding: 20px;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+.foot {
+  margin-right: 40px;
+}
+
+.info {
+  padding-top: 10px;
+}
+
+.section-title {
+  font-family: 'Rammetto One';
+  color: #2980b9;
+  position: relative;
+  margin: 25px;
+}
+
+.section-title::after {
+  content: "";
+  width: 150px;
+  height: 4px;
+  background: #2ecc71;
+  display: block;
+  position: absolute;
+  bottom: 0;
+  left: calc(50% - (150px/2));
+}
+
+.auj-title::after {
+  width: 165px;
+  left: calc(50% - (165px/2));
+}
+
+.demain-title::after {
+  width: 100px;
+  left: calc(50% - (100px/2));
+}
+
+.ademain-title::after {
+  width: 187px;
+  left: calc(50% - (187px/2));
+}
+
+.fas {
+  font-size: 25px;
+  margin: 5px;
+}
+
+.fa-thermometer-half {
+  color: #ff1800;
+}
+
+.fa-tint {
+  color: #2980b9;
+}
+
+.fa-wind {
+  color: #34495e;
+}
+
+.fa-water {
+  color: #2980b9;
+}
+
+.fa-compress-alt {
+  color: #c0392b;
+}
+
+.fa-snowflake {
+  color: #95a5a6;
+}
+
+input {
+  outline: none;
+  border: 2px solid #f1c40f;
+  border-radius: 5px;
+  padding: 7px;
+  transition: .3s linear;
+}
+
+input[type="submit"] {
+  background: #2ecc71;
+  border: 2px solid #2ecc71;
+  cursor: pointer;
+}
+
+input[type="text"] {
+  width: 250px;
+  background: #34495e;
+  border: 2px solid #34495e;
+}
+
+input[type="text"]::placeholder {
+  color: #3498db;
+}
+
+input[type="text"]:focus {
+  border: 2px solid #8e44ad;
+  background: #16a085;
+}
+
+input[type="text"]:focus::placeholder {
+  color: #8e44ad;
+}
+
+input[type="submit"]:hover, input[type="submit"]:focus {
+  background: #8e44ad;
+  border: 2px solid #8e44ad;
+}
+
+.neige, .neige-demain, .neige-ademain {
+  display: none;
+}
+
+section {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+a {
+  color: #c0392b;
+  transition: .2s linear;
+}
+
+a:hover {
+  color: #8e44ad;
+}
+
+.info-box {
+  background: #c0392b;
+  padding: 20px;
+  width: 250px;
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  animation: fadeIn 1.5s;
+}
+
+.close-btn {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: none;
+  border: none;
+  outline: none;
+  color: #2c3e50;
+}
+
+.marker {
+  color: #3498db;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
