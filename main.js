@@ -60,6 +60,11 @@ async function main(apiUrl) {
       jourd = 1;
       moisd++;
     }
+    
+    if (mois === '02' && jour === '28') {
+      jourd = 1;
+      moisd+;
+    }
 
     jourd < 10 ? jourd = '0' + jourd : jourd = jourd;
     moisd < 10 ? moisd = '0' + moisd : moisd = moisd;
@@ -108,6 +113,11 @@ async function main(apiUrl) {
     if(mois === '04' || mois === '06' || mois === '07' || mois === '09' || mois === '11' && jourd === 30){
       jourad = 1;
       moisad++;
+    }
+    
+    if (mois === '02' && jour === '27') {
+      jourd = 1;
+      moisd+;
     }
 
     jourad < 10 ? jourad = '0' + jourad : jourad = jourad;
