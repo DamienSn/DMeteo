@@ -94,6 +94,11 @@ async function main(apiUrl) {
       jourad = 1;
       moisad++;
     }
+    
+    if (jour === 31) {
+      jourad = 2;
+      moisad++;
+    }
 
     jourad < 10 ? jourad = '0' + jourad : jourad = jourad;
     moisad < 10 ? moisad = '0' + moisad : moisad = moisad;
