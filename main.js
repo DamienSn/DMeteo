@@ -65,7 +65,7 @@ async function main(apiUrl) {
     document.querySelector('.pression-demain').textContent = pressionD + " hPa";
 
 
-    let day3 = new Date(date.setDate(date.getDate()+1));
+    let day3 = new Date(day2.setDate(day2.getDate()+1));
 
     let yearad = day3.getFullYear();
     let moisad = day3.getMonth() + 1;
