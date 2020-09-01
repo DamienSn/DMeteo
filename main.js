@@ -43,48 +43,20 @@ async function main(apiUrl) {
     document.querySelector('.humidite').textContent = humidite + " %";
     document.querySelector('.pression').textContent = pression + " hPa";
 
-    let anneed = annee;
-    let moisd = mois;
-    let jourd = jour + 1;
+    let day2 = new Date(date.setDate(date.getDate()+1));
 
-    if (mois === 12 && jour === 31) {
-      anneed = annee +1;
-    }
-
-    if (jour === 31) {
-      jourd = 1;
-      moisd++;
-    }
-    
-    if(mois === '04' || mois === '06' || mois === '07' || mois === '09' || mois === '11' && jour === 30){
-      jourd = 1;
-      moisd++;
-    }
-    
-    if (mois === '02' && jour === '28') {
-      jourd = 1;
-      moisd++;
-    }
+    let yeard = day2.getFullYear();
+    let moisd = day2.getMonth() + 1;
+    let jourd = day2.getDate();
 
     jourd < 10 ? jourd = '0' + jourd : jourd = jourd;
     moisd < 10 ? moisd = '0' + moisd : moisd = moisd;
 
-    jourd = jourd.toString()
-    moisd = moisd.toString()
-
-    if (moisd.length > 2) {
-      moisd = moisd.slice(moisd.length - 2)
-    }
-
-    if (jourd.length > 2) {
-      jourd = jourd.slice(jourd.length - 2)
-    }
-
-    const temperatureD = Math.floor(meteo[anneed + '-' + moisd + '-' + jourd + ' ' + heure + ':00:00'].temperature.sol - 273.15);
-    const humiditeD = Math.floor(meteo[anneed + '-' + moisd + '-' + jourd + ' ' + heure + ':00:00'].humidite['2m']);
-    const ventD = Math.floor(meteo[anneed + '-' + moisd + '-' + jourd + ' ' + heure + ':00:00'].vent_moyen["10m"]);
-    const precipD = Math.floor(meteo[anneed + '-' + moisd + '-' + jourd + ' ' + heure + ':00:00'].pluie);
-    const pressionD =  Math.floor((meteo[anneed + '-' + moisd + '-' + jourd + ' ' + heure + ':00:00'].pression["niveau_de_la_mer"])/100);
+    const temperatureD = Math.floor(meteo[yeard + '-' + moisd + '-' + jourd + ' ' + heure + ':00:00'].temperature.sol - 273.15);
+    const humiditeD = Math.floor(meteo[yeard + '-' + moisd + '-' + jourd + ' ' + heure + ':00:00'].humidite['2m']);
+    const ventD = Math.floor(meteo[yeard + '-' + moisd + '-' + jourd + ' ' + heure + ':00:00'].vent_moyen["10m"]);
+    const precipD = Math.floor(meteo[yeard + '-' + moisd + '-' + jourd + ' ' + heure + ':00:00'].pluie);
+    const pressionD =  Math.floor((meteo[yeard + '-' + moisd + '-' + jourd + ' ' + heure + ':00:00'].pression["niveau_de_la_mer"])/100);
 
     document.querySelector('.temp-demain').textContent = temperatureD + "°C";
     document.querySelector('.precipitacions-demain').textContent = precipD + " mm";
@@ -92,53 +64,21 @@ async function main(apiUrl) {
     document.querySelector('.humidite-demain').textContent = humiditeD + " %";
     document.querySelector('.pression-demain').textContent = pressionD + " hPa";
 
-    let anneead = annee;
-    let moisad = mois;
-    let jourad = jour + 2;
 
-    if (moisd === "12" && jourd === "31") {
-      anneead = anneed+1;
-    }
+    let day3 = new Date(date.setDate(date.getDate()+1));
 
-    if (jourd === "31") {
-      jourad = 1;
-      moisad++;
-    }
-    
-    if (jour === 31) {
-      jourad = 2;
-      moisad++;
-    }
-    
-    if(mois === '04' || mois === '06' || mois === '07' || mois === '09' || mois === '11' && jourd === 30){
-      jourad = 1;
-      moisad++;
-    }
-    
-    if (mois === '02' && jour === '27') {
-      jourad = 1;
-      moisad++;
-    }
+    let yearad = day3.getFullYear();
+    let moisad = day3.getMonth() + 1;
+    let jourad = day3.getDate();
 
     jourad < 10 ? jourad = '0' + jourad : jourad = jourad;
-    moisad < 10 ? moisad = '0' + moisad : moisad = moisad;
+    moisad < 10 ? moisad = '0' + moisad : moisad =  moisad;
 
-    jourad = jourad.toString()
-    moisad = moisad.toString()
-
-    if (moisad.length > 2) {
-      moisad = moisad.slice(moisad.length - 2)
-    }
-
-    if (jourad.length > 2) {
-      jourad = jourad.slice(jourad.length - 2)
-    }
-
-    const temperatureAd = Math.floor(meteo[anneead + '-' + moisad + '-' + jourad + ' ' + heure + ':00:00'].temperature.sol - 273.15);
-    const humiditeAd = Math.floor(meteo[anneead + '-' + moisad + '-' + jourad + ' ' + heure + ':00:00'].humidite['2m']);
-    const ventAd = Math.floor(meteo[anneead + '-' + moisad + '-' + jourad + ' ' + heure + ':00:00'].vent_moyen["10m"]);
-    const precipAd = Math.floor(meteo[anneead + '-' + moisad + '-' + jourad + ' ' + heure + ':00:00'].pluie);
-    const pressionAd =  Math.floor((meteo[anneead + '-' + moisad + '-' + jourad + ' ' + heure + ':00:00'].pression["niveau_de_la_mer"])/100);
+    const temperatureAd = Math.floor(meteo[yearad + '-' + moisad + '-' + jourad + ' ' + heure + ':00:00'].temperature.sol - 273.15);
+    const humiditeAd = Math.floor(meteo[yearad + '-' + moisad + '-' + jourad + ' ' + heure + ':00:00'].humidite['2m']);
+    const ventAd = Math.floor(meteo[yearad + '-' + moisad + '-' + jourad + ' ' + heure + ':00:00'].vent_moyen["10m"]);
+    const precipAd = Math.floor(meteo[yearad + '-' + moisad + '-' + jourad + ' ' + heure + ':00:00'].pluie);
+    const pressionAd =  Math.floor((meteo[yearad + '-' + moisad + '-' + jourad + ' ' + heure + ':00:00'].pression["niveau_de_la_mer"])/100);
 
     document.querySelector('.temp-ademain').textContent = temperatureAd + "°C";
     document.querySelector('.precipitacions-ademain').textContent = precipAd + " mm";
