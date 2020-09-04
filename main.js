@@ -1,15 +1,5 @@
 let apiUrl = 'https://cors-anywhere.herokuapp.com/http://www.infoclimat.fr/public-api/gfs/json?_ll=48.85341,2.3488&_auth=BhwHEA9xVXcALVBnVyFXflY%2BAjdeKFB3AHxVNglsXyIHbFY3D29TNVQ6BnsPIFZgUn8DYFphADABagtzWCpTMgZsB2sPZFUyAG9QNVd4V3xWeAJjXn5QdwBkVToJel89B2ZWNA9yUzBUPAZnDyFWY1JjA2daegAnAWMLaVg8UzgGYgdjD29VMQBtUDdXeFd8VmACNF5lUDkAZ1U6CWRfNQdkVjUPalMxVDoGbA8hVmtSZQNiWmQAMQFnC2hYMVMvBnoHGg8fVSoAL1BwVzJXJVZ4AjdeP1A8&_c=19f13168e71332a1d0913aabac898649';
 
-try {
-  let href = window.location.href;
-  let index = href.indexOf("?") + 4;
-  findCity(href.slice(index));
-} catch (e) {
-  console.error(e);
-} finally {
-  main(apiUrl);
-}
-
 async function main(apiUrl) {
   const meteo = await window.fetch(apiUrl)
   .then(res => res.json())
@@ -157,3 +147,14 @@ document.querySelector('#city').onkeypress = function(e) {
 closeBtn.onclick = function(e){
   document.body.removeChild(msgBox);
 };
+
+try {
+  let href = window.location.href;
+  let index = href.indexOf("?") + 4;
+  findCity(href.slice(index));
+  document.body.removeChild(msgBox);
+} catch (e) {
+  console.error(e);
+} finally {
+  main(apiUrl);
+}
