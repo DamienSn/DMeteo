@@ -86,7 +86,11 @@ async function main(apiUrl) {
   };
 };
 
+let msgBox = document.querySelector('.info-box');
+
 async function findCity(city) {
+
+  document.body.removeChild(msgBox);
 
   let apiKey = 'VU8EE1YoXH4ALVNkVyEKI1Y%2BADVZLwkuVCgBYg5rA34HbANiB2cBZ1U7A34CLQE3WXQDYA80ADBQOwpyWykEZVU%2FBGhWPVw7AG9TNld4CiFWeABhWXkJLlQwAW4OfQNhB2YDYQd6AWJVPQNiAiwBNFloA2cPLwAnUDIKaFs%2FBG9VMARpVjJcPQBoUzBXeAohVmAANlliCWBUNQEwDmoDMgc2AzQHNQFjVT4DYwIsAT1ZbwNhDzMAOlA3Cm5bMwR4VSkEGVZGXCMAL1NzVzIKeFZ4ADVZOAll&_c=6afd777ac1b376af17cc7744faec4733';
 
@@ -115,8 +119,6 @@ async function findCity(city) {
   };
 };
 
-
-let msgBox = document.querySelector('.info-box');
 let closeBtn = document.querySelector('.close-btn');
 
 document.querySelector('#submit').onclick = function(e) {
@@ -124,7 +126,6 @@ document.querySelector('#submit').onclick = function(e) {
   if(inputVal.length === 7){
     findCity(inputVal);
     console.info('Données récupérées !');
-    document.body.removeChild(msgBox);
   } else {
     console.error('Id de ville invalide ! Veuillez réessayer !');
   };
@@ -136,7 +137,6 @@ document.querySelector('#city').onkeypress = function(e) {
     if(inputVal.length === 7){
       findCity(inputVal);
       console.info('Données récupérées !');
-      document.body.removeChild(msgBox);
     } else {
       console.error('Id de ville invalide ! Veuillez réessayer !');
     }
@@ -152,7 +152,6 @@ try {
   let href = window.location.href;
   let index = href.indexOf("?") + 4;
   findCity(href.slice(index));
-  document.body.removeChild(msgBox);
 } catch (e) {
   console.error(e);
 } finally {
