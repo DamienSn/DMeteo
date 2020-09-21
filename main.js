@@ -148,12 +148,11 @@ closeBtn.onclick = function(e){
   document.body.removeChild(msgBox);
 };
 
-try {
-  let href = window.location.href;
+
+let href = window.location.href;
+if (href.indexOf('?') !== -1) {
   let index = href.indexOf("?") + 4;
   findCity(href.slice(index));
-} catch (e) {
-  console.error(e);
-} finally {
-  main(apiUrl);
+} else {
+  main(apiUrl)
 }
