@@ -262,11 +262,16 @@ a:hover {
 @media screen and (max-width: 1000px), screen and (max-height: 600px){
   footer {
     position: relative;
-    flex-direction: column;
     margin-top: 50px;
   }
 
   .content {
+    flex-direction: column;
+  }
+}
+
+@media screen and (max-width: 750px) {
+  footer {
     flex-direction: column;
   }
 }
