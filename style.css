@@ -199,6 +199,26 @@ a:hover {
   color: #3498db;
 }
 
+.posBtn {
+  cursor: pointer;
+  background: #34495e;
+  border: none;
+  outline: none;
+  border-radius: 5px;
+  color: #ecf0f1;
+  font-family: 'Alata', cursive;
+  padding: 7px;
+  transition: .3s linear;
+}
+
+.posBtn::before {
+  color: #c0392b;
+}
+
+.posBtn:hover {
+  background: #16a085;
+}
+
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -273,5 +293,9 @@ a:hover {
 @media screen and (max-width: 750px) {
   footer {
     flex-direction: column;
+  }
+
+  .posBtn, .cpright{
+    margin-top: 50px;
   }
 }
