@@ -1,8 +1,8 @@
 const loader = document.querySelector('.loader-container');
 const loaderParent = document.querySelector('.content');
 let apiKey = 'BhwCFQF%2FXH5QfVptUiQLIlY%2BVWAKfAUiAn5QMw9qXyIJYlc2Dm5VMwNtUC1SfQs9Ai8GZQoxCDhUP1IqAHICYwZsAm4Balw7UD9aP1J9CyBWeFU0CioFIgJmUD8PfF89CWhXNQ5zVTYDa1AxUnwLPgIzBmIKKggvVDZSMwBtAmAGZAJvAWVcNlA3WjpSfQsgVmBVYwoyBT0CZFAwD2FfbQloV2UOaVU2A29QNVJ8Cz8CNAZgCjQINFQ%2BUjcAagJ%2BBnoCHwERXCNQf1p6UjcLeVZ4VWAKawVp&_c=e1f1f6aa3054a85d4b428fe6051deefa';
-let apiUrl = 'https://cors-anywhere.herokuapp.com/http://www.infoclimat.fr/public-api/gfs/json?_ll=48.85341,2.3488&_auth=' + apiKey;
-const baseUrl = 'https://cors-anywhere.herokuapp.com/http://www.infoclimat.fr/public-api/gfs/json?_ll=';
+let apiUrl = 'https://cors-anywhere.herokuapp.com/https://www.infoclimat.fr/public-api/gfs/json?_ll=48.85341,2.3488&_auth=' + apiKey;
+const baseUrl = 'https://cors-anywhere.herokuapp.com/https://www.infoclimat.fr/public-api/gfs/json?_ll=';
 
 let pos = navigator.geolocation.getCurrentPosition((position) => {
   console.log('Permission accordée !');
@@ -105,86 +105,77 @@ async function main(apiUrl) {
 
 let msgBox = document.querySelector('.info-box');
 
-async function findCity(city) {
+async function findCity(city, postCode) {
 
-  document.body.removeChild(msgBox);
+  try {
+    document.body.removeChild(msgBox);
+  } catch {
 
-  var request = new XMLHttpRequest();
-  request.open('GET', `https://cors-anywhere.herokuapp.com/https://www.infoclimat.fr/api-previsions-meteo.html?id=${city}&cntry=FR`);
-  request.send();
-
-  request.onload = function() {
-    var res = request.response;
-    let string = '<textarea style="width:100%" rows="3">';
-    let index = res.indexOf(string) + string.length;
-    let sliced = res.slice(index);
-    let index2 = sliced.indexOf(string) + string.length;
-    let sliced2 = sliced.slice(index2);
-
-    let string2 = '</textarea>';
-    let index3 = sliced2.indexOf(string2);
-    let goodSlice = sliced2.slice(0, index3);
-    let falseIndex = goodSlice.indexOf('amp;');
-    let slicedWithKey = goodSlice.slice(0, falseIndex) + '_auth=' + apiKey;
-    console.log(slicedWithKey);
-
-    apiUrl = 'https://cors-anywhere.herokuapp.com/' + slicedWithKey;
-
-    main(apiUrl)
   };
-};
 
-let closeBtn = document.querySelector('.close-btn');
+  res = await fetch(`https://geo.api.gouv.fr/communes?nom=${city}&format=geojson`)
+    .then(res => res.json())
+    .then(json => json);
 
-document.querySelector('#submit').onclick = function(e) {
-  let inputVal = document.querySelector('#city').value;
-  if(inputVal.length === 7){
-    findCity(inputVal);
-    console.info('Données récupérées !');
-  } else {
-    console.error('Id de ville invalide ! Veuillez réessayer !');
+    res = res.features;
+
+    for (var item of res) {
+      item.properties.codesPostaux.forEach((code, i) => {
+        if (code == postCode) {
+          let lat = item.geometry.coordinates[1];
+          let long = item.geometry.coordinates[0];
+          main(`${baseUrl}${lat},${long}&_auth=${apiKey}`);
+          console.log('Fecth en cours !');
+        }
+      });
+
+    };
   };
-};
 
-document.querySelector('#city').onkeypress = function(e) {
-  if(e.key === 'Enter'){
-    let inputVal = document.querySelector('#city').value;
-    if(inputVal.length === 7){
-      findCity(inputVal);
-      console.info('Données récupérées !');
-    } else {
-      console.error('Id de ville invalide ! Veuillez réessayer !');
+
+  let closeBtn = document.querySelector('.close-btn');
+
+  document.querySelector('#submit').onclick = function(e) {
+    let city = document.querySelector('#city').value.toLowerCase();
+    let postCode = document.querySelector('#postcode').value;
+    findCity(city, postCode)
+  };
+
+  document.querySelector('#city').onkeypress = function(e) {
+    if(e.key === 'Enter'){
+      let city = document.querySelector('#city').value.toLowerCase();
+      let postCode = document.querySelector('#postcode').value;
+      findCity(city, postCode)
     }
+  };
+
+
+  closeBtn.onclick = function(e){
+    document.body.removeChild(msgBox);
+  };
+
+
+  let href = window.location.href;
+  if (href.indexOf('?') !== -1) {
+    let index = href.indexOf("?") + 4;
+    findCity(href.slice(index));
+  } else {
+    main(apiUrl)
   }
-};
 
+  if ('geolocation' in navigator) {
+    let btn = document.createElement('button')
+    btn.textContent = 'Utiliser ma position';
+    btn.classList.add('posBtn');
+    let parent = document.querySelector('footer');
+    let cpRight = document.querySelector('.cpright');
+    parent.insertBefore(btn, cpRight);
+    btn.onclick = geoloc;
+  }
 
-closeBtn.onclick = function(e){
-  document.body.removeChild(msgBox);
-};
-
-
-let href = window.location.href;
-if (href.indexOf('?') !== -1) {
-  let index = href.indexOf("?") + 4;
-  findCity(href.slice(index));
-} else {
-  main(apiUrl)
-}
-
-if ('geolocation' in navigator) {
-  let btn = document.createElement('button')
-  btn.textContent = 'Utiliser ma position';
-  btn.classList.add('posBtn');
-  let parent = document.querySelector('footer');
-  let cpRight = document.querySelector('.cpright');
-  parent.insertBefore(btn, cpRight);
-  btn.onclick = geoloc;
-}
-
-function geoloc() {
+  function geoloc() {
     let lat = pos.coords.latitude;
     let long = pos.coords.longitude;
     main(`${baseUrl}${lat},${long}&_auth=${apiKey}`);
     document.body.removeChild(msgBox);
-};
+  };
