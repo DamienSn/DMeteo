@@ -1,3 +1,7 @@
+window.addEventListener('load', () => {
+  alert('Opération de maintenance en cours, merci de revenir plus tard...')
+})
+
 const loader = document.querySelector('.loader-container');
 const loaderParent = document.querySelector('.content');
 let apiUrl = 'https://cors-anywhere.herokuapp.com/http://www.infoclimat.fr/public-api/gfs/json?_ll=48.85341,2.3488&_auth=BhwHEA9xVXcALVBnVyFXflY%2BAjdeKFB3AHxVNglsXyIHbFY3D29TNVQ6BnsPIFZgUn8DYFphADABagtzWCpTMgZsB2sPZFUyAG9QNVd4V3xWeAJjXn5QdwBkVToJel89B2ZWNA9yUzBUPAZnDyFWY1JjA2daegAnAWMLaVg8UzgGYgdjD29VMQBtUDdXeFd8VmACNF5lUDkAZ1U6CWRfNQdkVjUPalMxVDoGbA8hVmtSZQNiWmQAMQFnC2hYMVMvBnoHGg8fVSoAL1BwVzJXJVZ4AjdeP1A8&_c=19f13168e71332a1d0913aabac898649';
