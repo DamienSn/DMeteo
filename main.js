@@ -1,7 +1,3 @@
-window.addEventListener('load', () => {
-  alert('Opération de maintenance en cours, merci de revenir plus tard...')
-})
-
 const loader = document.querySelector('.loader-container');
 const loaderParent = document.querySelector('.content');
 let apiUrl = 'https://cors-anywhere.herokuapp.com/http://www.infoclimat.fr/public-api/gfs/json?_ll=48.85341,2.3488&_auth=BhwHEA9xVXcALVBnVyFXflY%2BAjdeKFB3AHxVNglsXyIHbFY3D29TNVQ6BnsPIFZgUn8DYFphADABagtzWCpTMgZsB2sPZFUyAG9QNVd4V3xWeAJjXn5QdwBkVToJel89B2ZWNA9yUzBUPAZnDyFWY1JjA2daegAnAWMLaVg8UzgGYgdjD29VMQBtUDdXeFd8VmACNF5lUDkAZ1U6CWRfNQdkVjUPalMxVDoGbA8hVmtSZQNiWmQAMQFnC2hYMVMvBnoHGg8fVSoAL1BwVzJXJVZ4AjdeP1A8&_c=19f13168e71332a1d0913aabac898649';
@@ -106,7 +102,7 @@ async function findCity(city) {
 
   document.body.removeChild(msgBox);
 
-  let apiKey = 'VU8EE1YoXH4ALVNkVyEKI1Y%2BADVZLwkuVCgBYg5rA34HbANiB2cBZ1U7A34CLQE3WXQDYA80ADBQOwpyWykEZVU%2FBGhWPVw7AG9TNld4CiFWeABhWXkJLlQwAW4OfQNhB2YDYQd6AWJVPQNiAiwBNFloA2cPLwAnUDIKaFs%2FBG9VMARpVjJcPQBoUzBXeAohVmAANlliCWBUNQEwDmoDMgc2AzQHNQFjVT4DYwIsAT1ZbwNhDzMAOlA3Cm5bMwR4VSkEGVZGXCMAL1NzVzIKeFZ4ADVZOAll&_c=6afd777ac1b376af17cc7744faec4733';
+  let apiKey = 'BhwCFQF%2FXH5QfVptUiQLIlY%2BVWAKfAUiAn5QMw9qXyIJYlc2Dm5VMwNtUC1SfQs9Ai8GZQoxCDhUP1IqAHICYwZsAm4Balw7UD9aP1J9CyBWeFU0CioFIgJmUD8PfF89CWhXNQ5zVTYDa1AxUnwLPgIzBmIKKggvVDZSMwBtAmAGZAJvAWVcNlA3WjpSfQsgVmBVYwoyBT0CZFAwD2FfbQloV2UOaVU2A29QNVJ8Cz8CNAZgCjQINFQ%2BUjcAagJ%2BBnoCHwERXCNQf1p6UjcLeVZ4VWAKawVp&_c=e1f1f6aa3054a85d4b428fe6051deefa';
 
   var request = new XMLHttpRequest();
   request.open('GET', `https://cors-anywhere.herokuapp.com/https://www.infoclimat.fr/api-previsions-meteo.html?id=${city}&cntry=FR`);
