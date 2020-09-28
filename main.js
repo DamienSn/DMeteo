@@ -3,10 +3,15 @@ const loaderParent = document.querySelector('.content');
 let apiKey = 'BhwCFQF%2FXH5QfVptUiQLIlY%2BVWAKfAUiAn5QMw9qXyIJYlc2Dm5VMwNtUC1SfQs9Ai8GZQoxCDhUP1IqAHICYwZsAm4Balw7UD9aP1J9CyBWeFU0CioFIgJmUD8PfF89CWhXNQ5zVTYDa1AxUnwLPgIzBmIKKggvVDZSMwBtAmAGZAJvAWVcNlA3WjpSfQsgVmBVYwoyBT0CZFAwD2FfbQloV2UOaVU2A29QNVJ8Cz8CNAZgCjQINFQ%2BUjcAagJ%2BBnoCHwERXCNQf1p6UjcLeVZ4VWAKawVp&_c=e1f1f6aa3054a85d4b428fe6051deefa';
 let apiUrl = 'https://cors-anywhere.herokuapp.com/https://www.infoclimat.fr/public-api/gfs/json?_ll=48.85341,2.3488&_auth=' + apiKey;
 const baseUrl = 'https://cors-anywhere.herokuapp.com/https://www.infoclimat.fr/public-api/gfs/json?_ll=';
+let href = window.location.href;
 
 let pos = navigator.geolocation.getCurrentPosition((position) => {
-  console.log('Permission accordée !');
   pos = position;
+  if (href.indexOf('pos') !== -1) {
+    console.log('geoloc');
+    geoloc();
+  }
+  console.log('Permission accordée !');
 });
 
 async function main(apiUrl) {
@@ -154,15 +159,6 @@ async function findCity(city, postCode) {
     document.body.removeChild(msgBox);
   };
 
-
-  let href = window.location.href;
-  if (href.indexOf('?') !== -1) {
-    let index = href.indexOf("?") + 4;
-    findCity(href.slice(index));
-  } else {
-    main(apiUrl)
-  }
-
   if ('geolocation' in navigator) {
     let btn = document.createElement('button')
     btn.textContent = 'Utiliser ma position';
@@ -179,3 +175,16 @@ async function findCity(city, postCode) {
     main(`${baseUrl}${lat},${long}&_auth=${apiKey}`);
     document.body.removeChild(msgBox);
   };
+
+  if (href.indexOf('?') !== -1) {
+    if (href.indexOf("?") !== -1 && href.indexOf('&') !== -1){
+      let index = href.indexOf("?");
+      let indexEt = href.indexOf('&');
+      let city = href.slice(index + 7, indexEt).toLowerCase();
+      let code = href.slice(indexEt + 6);
+
+      findCity(city, code);
+    }
+  } else {
+    main(apiUrl)
+  }
