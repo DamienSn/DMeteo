@@ -9,7 +9,7 @@ https://damiensn.github.io/DMeteo?pos
 
 # Accéder directement aux prévisions d'une ville
 Pour accéder directement aux prévisions d'une, utilisez une url comme celle ci :
-https://damiensn.github.io/DMeteo?ville={VOTRE VILLE}&code={VOTRE CODE POSTAL}
+https://damiensn.github.io/DMeteo?ville={VOTRE-VILLE}&code={VOTRE-CODE-POSTAL}
 https://damiensn.github.io/DMeteo?ville=verfeil&code=31590
 
 # Changer de ville
