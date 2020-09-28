@@ -71,6 +71,15 @@ footer {
   left: calc(50% - (150px/2));
 }
 
+.city {
+  text-align: center;
+  font-family: "Rammetto One", cursive;
+}
+
+.city-h1 {
+  font-family: "Rammetto One", cursive;
+}
+
 .auj-title::after {
   width: 165px;
   left: calc(50% - (165px/2));

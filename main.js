@@ -4,6 +4,8 @@ let apiKey = 'BhwCFQF%2FXH5QfVptUiQLIlY%2BVWAKfAUiAn5QMw9qXyIJYlc2Dm5VMwNtUC1SfQ
 let apiUrl = 'https://cors-anywhere.herokuapp.com/https://www.infoclimat.fr/public-api/gfs/json?_ll=48.85341,2.3488&_auth=' + apiKey;
 const baseUrl = 'https://cors-anywhere.herokuapp.com/https://www.infoclimat.fr/public-api/gfs/json?_ll=';
 let href = window.location.href;
+const cityDesc = document.querySelector('.city-h1');
+let msgBox = document.querySelector('.info-box');
 
 let pos = navigator.geolocation.getCurrentPosition((position) => {
   pos = position;
@@ -13,6 +15,20 @@ let pos = navigator.geolocation.getCurrentPosition((position) => {
   }
   console.log('Permission accordée !');
 });
+
+function removeLoader(){
+  loaderParent.removeChild(loader);
+};
+
+function removeMsgBox() {
+  try {
+    document.body.removeChild(msgBox);
+  } catch {};
+};
+
+function capitalize(str) {
+  return str[0].toUpperCase() + str.slice(1).toLowerCase();
+};
 
 async function main(apiUrl) {
   document.body.style.cursor = 'progress';
@@ -101,22 +117,12 @@ async function main(apiUrl) {
     document.querySelector('.humidite-ademain').textContent = humiditeAd + " %";
     document.querySelector('.pression-ademain').textContent = pressionAd + " hPa";
   };
-
-  function removeLoader(){
-    loaderParent.removeChild(loader);
-  };
   document.body.style.cursor = 'auto';
 };
 
-let msgBox = document.querySelector('.info-box');
-
 async function findCity(city, postCode) {
 
-  try {
-    document.body.removeChild(msgBox);
-  } catch {
-
-  };
+  removeMsgBox()
 
   res = await fetch(`https://geo.api.gouv.fr/communes?nom=${city}&format=geojson`)
     .then(res => res.json())
@@ -131,6 +137,7 @@ async function findCity(city, postCode) {
           let long = item.geometry.coordinates[0];
           main(`${baseUrl}${lat},${long}&_auth=${apiKey}`);
           console.log('Fecth en cours !');
+          cityDesc.textContent = capitalize(city);
         }
       });
 
@@ -146,7 +153,7 @@ async function findCity(city, postCode) {
     findCity(city, postCode)
   };
 
-  document.querySelector('#city').onkeypress = function(e) {
+  document.querySelector('#postcode').onkeypress = function(e) {
     if(e.key === 'Enter'){
       let city = document.querySelector('#city').value.toLowerCase();
       let postCode = document.querySelector('#postcode').value;
@@ -173,7 +180,8 @@ async function findCity(city, postCode) {
     let lat = pos.coords.latitude;
     let long = pos.coords.longitude;
     main(`${baseUrl}${lat},${long}&_auth=${apiKey}`);
-    document.body.removeChild(msgBox);
+    cityDesc.textContent = 'ma position';
+    removeMsgBox();
   };
 
   if (href.indexOf('?') !== -1) {
