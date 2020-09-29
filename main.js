@@ -30,7 +30,7 @@ function capitalize(str) {
   return str[0].toUpperCase() + str.slice(1).toLowerCase();
 };
 
-async function main(apiUrl) {
+async function getForecasts(apiUrl) {
   document.body.style.cursor = 'progress';
   loaderParent.appendChild(loader);
   const meteo = await window.fetch(apiUrl)
@@ -40,85 +40,98 @@ async function main(apiUrl) {
   displayWeatherInfos(meteo);
   removeLoader();
 
-  function displayWeatherInfos(data) {
-
-    let date = new Date();
-    let jour = date.getDate();
-    let mois = date.getMonth() + 1;
-    let annee = date.getFullYear();
-    let heure = date.getHours();
-
-    heure >= 2 && heure < 5 ? heure = 2 : heure = heure;
-    heure >= 5 && heure < 8 ? heure = 5 : heure = heure;
-    heure >= 8 && heure < 11 ? heure = 8 : heure = heure;
-    heure >= 11 && heure < 14 ? heure = 11 : heure = heure;
-    heure >= 14 && heure < 17 ? heure = 14 : heure = heure;
-    heure >= 17 && heure < 20 ? heure = 17 : heure = heure;
-    heure >= 20 && heure < 23 ? heure = 20 : heure = heure;
-    heure >= 23 && heure < 2 ? heure = 23 : heure = heure;
-
-    heure < 10 ? heure = `0${heure}` : heure = heure;
-
-    jour < 10 ? jour = '0' + jour : jour = jour;
-    mois < 10 ? mois = '0' + mois : mois = mois;
-
-    const temperature = Math.floor(meteo[annee + '-' + mois + '-' + jour + ' ' + heure + ':00:00'].temperature.sol - 273.15);
-    const humidite = Math.floor(meteo[annee + '-' + mois + '-' + jour + ' ' + heure + ':00:00'].humidite['2m']);
-    const vent = Math.floor(meteo[annee + '-' + mois + '-' + jour + ' ' + heure + ':00:00'].vent_moyen["10m"]);
-    const precip = Math.floor(meteo[annee + '-' + mois + '-' + jour + ' ' + heure + ':00:00'].pluie);
-    const pression =  Math.floor((meteo[annee + '-' + mois + '-' + jour + ' ' + heure + ':00:00'].pression["niveau_de_la_mer"])/100);
-
-    document.querySelector('.temp').textContent = temperature + "°C";
-    document.querySelector('.precipitacions').textContent = precip + " mm";
-    document.querySelector('.vent').textContent = vent + " km/h";
-    document.querySelector('.humidite').textContent = humidite + " %";
-    document.querySelector('.pression').textContent = pression + " hPa";
-
-    let day2 = new Date(date.setDate(date.getDate()+1));
-
-    let yeard = day2.getFullYear();
-    let moisd = day2.getMonth() + 1;
-    let jourd = day2.getDate();
-
-    jourd < 10 ? jourd = '0' + jourd : jourd = jourd;
-    moisd < 10 ? moisd = '0' + moisd : moisd = moisd;
-
-    const temperatureD = Math.floor(meteo[yeard + '-' + moisd + '-' + jourd + ' ' + heure + ':00:00'].temperature.sol - 273.15);
-    const humiditeD = Math.floor(meteo[yeard + '-' + moisd + '-' + jourd + ' ' + heure + ':00:00'].humidite['2m']);
-    const ventD = Math.floor(meteo[yeard + '-' + moisd + '-' + jourd + ' ' + heure + ':00:00'].vent_moyen["10m"]);
-    const precipD = Math.floor(meteo[yeard + '-' + moisd + '-' + jourd + ' ' + heure + ':00:00'].pluie);
-    const pressionD =  Math.floor((meteo[yeard + '-' + moisd + '-' + jourd + ' ' + heure + ':00:00'].pression["niveau_de_la_mer"])/100);
-
-    document.querySelector('.temp-demain').textContent = temperatureD + "°C";
-    document.querySelector('.precipitacions-demain').textContent = precipD + " mm";
-    document.querySelector('.vent-demain').textContent = ventD + " km/h";
-    document.querySelector('.humidite-demain').textContent = humiditeD + " %";
-    document.querySelector('.pression-demain').textContent = pressionD + " hPa";
-
-
-    let day3 = new Date(day2.setDate(day2.getDate()+1));
-
-    let yearad = day3.getFullYear();
-    let moisad = day3.getMonth() + 1;
-    let jourad = day3.getDate();
-
-    jourad < 10 ? jourad = '0' + jourad : jourad = jourad;
-    moisad < 10 ? moisad = '0' + moisad : moisad =  moisad;
-
-    const temperatureAd = Math.floor(meteo[yearad + '-' + moisad + '-' + jourad + ' ' + heure + ':00:00'].temperature.sol - 273.15);
-    const humiditeAd = Math.floor(meteo[yearad + '-' + moisad + '-' + jourad + ' ' + heure + ':00:00'].humidite['2m']);
-    const ventAd = Math.floor(meteo[yearad + '-' + moisad + '-' + jourad + ' ' + heure + ':00:00'].vent_moyen["10m"]);
-    const precipAd = Math.floor(meteo[yearad + '-' + moisad + '-' + jourad + ' ' + heure + ':00:00'].pluie);
-    const pressionAd =  Math.floor((meteo[yearad + '-' + moisad + '-' + jourad + ' ' + heure + ':00:00'].pression["niveau_de_la_mer"])/100);
-
-    document.querySelector('.temp-ademain').textContent = temperatureAd + "°C";
-    document.querySelector('.precipitacions-ademain').textContent = precipAd + " mm";
-    document.querySelector('.vent-ademain').textContent = ventAd + " km/h";
-    document.querySelector('.humidite-ademain').textContent = humiditeAd + " %";
-    document.querySelector('.pression-ademain').textContent = pressionAd + " hPa";
-  };
   document.body.style.cursor = 'auto';
 };
+
+function displayWeatherInfos(meteo) {
+
+  let date = new Date();
+  let jour = date.getDate();
+  let mois = date.getMonth() + 1;
+  let annee = date.getFullYear();
+  let heure = date.getHours();
+
+  heure >= 2 && heure < 5 ? heure = 2 : heure = heure;
+  heure >= 5 && heure < 8 ? heure = 5 : heure = heure;
+  heure >= 8 && heure < 11 ? heure = 8 : heure = heure;
+  heure >= 11 && heure < 14 ? heure = 11 : heure = heure;
+  heure >= 14 && heure < 17 ? heure = 14 : heure = heure;
+  heure >= 17 && heure < 20 ? heure = 17 : heure = heure;
+  heure >= 20 && heure < 23 ? heure = 20 : heure = heure;
+  heure >= 23 && heure < 2 ? heure = 23 : heure = heure;
+
+  heure < 10 ? heure = `0${heure}` : heure = heure;
+
+  jour < 10 ? jour = '0' + jour : jour = jour;
+  mois < 10 ? mois = '0' + mois : mois = mois;
+
+  displayTodayForecast(meteo, heure, jour, mois, annee);
+
+  let day2 = new Date(date.setDate(date.getDate()+1));
+
+  let yeard = day2.getFullYear();
+  let moisd = day2.getMonth() + 1;
+  let jourd = day2.getDate();
+
+  jourd < 10 ? jourd = '0' + jourd : jourd = jourd;
+  moisd < 10 ? moisd = '0' + moisd : moisd = moisd;
+
+  displayTomorrowForecast(meteo, heure, jourd, moisd, yeard);
+
+
+  let day3 = new Date(day2.setDate(day2.getDate()+1));
+
+  let yearad = day3.getFullYear();
+  let moisad = day3.getMonth() + 1;
+  let jourad = day3.getDate();
+
+  jourad < 10 ? jourad = '0' + jourad : jourad = jourad;
+  moisad < 10 ? moisad = '0' + moisad : moisad =  moisad;
+
+  displayAfterForecast(meteo, heure, jourad, moisad, yearad);
+};
+
+function displayTodayForecast(meteo, heure, jour, mois, annee) {
+  const temperature = Math.floor(meteo[annee + '-' + mois + '-' + jour + ' ' + heure + ':00:00'].temperature.sol - 273.15);
+  const humidite = Math.floor(meteo[annee + '-' + mois + '-' + jour + ' ' + heure + ':00:00'].humidite['2m']);
+  const vent = Math.floor(meteo[annee + '-' + mois + '-' + jour + ' ' + heure + ':00:00'].vent_moyen["10m"]);
+  const precip = Math.floor(meteo[annee + '-' + mois + '-' + jour + ' ' + heure + ':00:00'].pluie);
+  const pression =  Math.floor((meteo[annee + '-' + mois + '-' + jour + ' ' + heure + ':00:00'].pression["niveau_de_la_mer"])/100);
+
+  document.querySelector('.temp').textContent = temperature + "°C";
+  document.querySelector('.precipitacions').textContent = precip + " mm";
+  document.querySelector('.vent').textContent = vent + " km/h";
+  document.querySelector('.humidite').textContent = humidite + " %";
+  document.querySelector('.pression').textContent = pression + " hPa";
+};
+
+function displayTomorrowForecast(meteo, heure, jour, mois, annee) {
+  const temperature = Math.floor(meteo[annee + '-' + mois + '-' + jour + ' ' + heure + ':00:00'].temperature.sol - 273.15);
+  const humidite = Math.floor(meteo[annee + '-' + mois + '-' + jour + ' ' + heure + ':00:00'].humidite['2m']);
+  const vent = Math.floor(meteo[annee + '-' + mois + '-' + jour + ' ' + heure + ':00:00'].vent_moyen["10m"]);
+  const precip = Math.floor(meteo[annee + '-' + mois + '-' + jour + ' ' + heure + ':00:00'].pluie);
+  const pression =  Math.floor((meteo[annee + '-' + mois + '-' + jour + ' ' + heure + ':00:00'].pression["niveau_de_la_mer"])/100);
+
+  document.querySelector('.temp-demain').textContent = temperature + "°C";
+  document.querySelector('.precipitacions-demain').textContent = precip + " mm";
+  document.querySelector('.vent-demain').textContent = vent + " km/h";
+  document.querySelector('.humidite-demain').textContent = humidite + " %";
+  document.querySelector('.pression-demain').textContent = pression + " hPa";
+};
+
+function displayAfterForecast(meteo, heure, jour, mois, annee) {
+  const temperature = Math.floor(meteo[annee + '-' + mois + '-' + jour + ' ' + heure + ':00:00'].temperature.sol - 273.15);
+  const humidite = Math.floor(meteo[annee + '-' + mois + '-' + jour + ' ' + heure + ':00:00'].humidite['2m']);
+  const vent = Math.floor(meteo[annee + '-' + mois + '-' + jour + ' ' + heure + ':00:00'].vent_moyen["10m"]);
+  const precip = Math.floor(meteo[annee + '-' + mois + '-' + jour + ' ' + heure + ':00:00'].pluie);
+  const pression =  Math.floor((meteo[annee + '-' + mois + '-' + jour + ' ' + heure + ':00:00'].pression["niveau_de_la_mer"])/100);
+
+  document.querySelector('.temp-ademain').textContent = temperature + "°C";
+  document.querySelector('.precipitacions-ademain').textContent = precip + " mm";
+  document.querySelector('.vent-ademain').textContent = vent + " km/h";
+  document.querySelector('.humidite-ademain').textContent = humidite + " %";
+  document.querySelector('.pression-ademain').textContent = pression + " hPa";
+}
 
 async function findCity(city, postCode) {
 
@@ -135,7 +148,7 @@ async function findCity(city, postCode) {
         if (code == postCode) {
           let lat = item.geometry.coordinates[1];
           let long = item.geometry.coordinates[0];
-          main(`${baseUrl}${lat},${long}&_auth=${apiKey}`);
+          getForecasts(`${baseUrl}${lat},${long}&_auth=${apiKey}`);
           console.log('Fecth en cours !');
           cityDesc.textContent = capitalize(city);
         }
@@ -179,7 +192,7 @@ async function findCity(city, postCode) {
   function geoloc() {
     let lat = pos.coords.latitude;
     let long = pos.coords.longitude;
-    main(`${baseUrl}${lat},${long}&_auth=${apiKey}`);
+    getForecasts(`${baseUrl}${lat},${long}&_auth=${apiKey}`);
     cityDesc.textContent = 'ma position';
     removeMsgBox();
   };
@@ -194,5 +207,5 @@ async function findCity(city, postCode) {
       findCity(city, code);
     }
   } else {
-    main(apiUrl)
+    getForecasts(apiUrl)
   }
