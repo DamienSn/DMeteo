@@ -37,6 +37,8 @@ async function getForecasts(apiUrl) {
   .then(res => res.json())
   .then (json => json);
 
+  console.log(meteo);
+
   displayWeatherInfos(meteo);
   removeLoader();
 
@@ -51,14 +53,14 @@ function displayWeatherInfos(meteo) {
   let annee = date.getFullYear();
   let heure = date.getHours();
 
-  heure >= 2 && heure < 5 ? heure = 2 : heure = heure;
-  heure >= 5 && heure < 8 ? heure = 5 : heure = heure;
-  heure >= 8 && heure < 11 ? heure = 8 : heure = heure;
-  heure >= 11 && heure < 14 ? heure = 11 : heure = heure;
-  heure >= 14 && heure < 17 ? heure = 14 : heure = heure;
-  heure >= 17 && heure < 20 ? heure = 17 : heure = heure;
-  heure >= 20 && heure < 23 ? heure = 20 : heure = heure;
-  heure >= 23 && heure < 2 ? heure = 23 : heure = heure;
+  heure >= 1 && heure < 4 ? heure = 1 : heure = heure;
+  heure >= 4 && heure < 7 ? heure = 4 : heure = heure;
+  heure >= 7 && heure < 10 ? heure = 7 : heure = heure;
+  heure >= 10 && heure < 13 ? heure = 10 : heure = heure;
+  heure >= 13 && heure < 16 ? heure = 13 : heure = heure;
+  heure >= 16 && heure < 19 ? heure = 16 : heure = heure;
+  heure >= 19 && heure < 22 ? heure = 19 : heure = heure;
+  heure >= 22 && heure < 2 ? heure = 22 : heure = heure;
 
   heure < 10 ? heure = `0${heure}` : heure = heure;
 
