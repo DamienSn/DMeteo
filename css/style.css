@@ -215,7 +215,7 @@ td.head i {
 
 @media screen and (max-width: 500px) {
   .logo {
-    display: none;
+    width: 75px;
   }
 
   .brand h1 {
@@ -228,5 +228,11 @@ td.head i {
 
   .forecast {
     height: 375px;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .logo {
+    width: 50px;
   }
 }
