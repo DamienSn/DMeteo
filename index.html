@@ -4,98 +4,128 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>DMétéo</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.css">
-  <link href="https://fonts.googleapis.com/css2?family=Alata&family=Limelight&family=Rammetto+One&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&family=Poppins&display=swap" rel="stylesheet">
   <link rel="icon" type="image/ico" href="Icones/favicon.ico"/>
 </head>
 <body>
 
   <header>
-    <div class="logo"></div>
-    <div class="header-text">
-      <h1 class="head">DMétéo</h1>
-      <h5 class="head">Votre nouvelle météo</h5>
+    <div class="brand">
+      <div class="logo"></div>
+      <div class="header-text">
+        <h1 class="head">DMétéo</h1>
+        <h5 class="head">Votre nouvelle météo</h5>
+      </div>
     </div>
+
+    <button class="menu-toggler">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
   </header>
 
-  <h1 class="city">Météo pour : <span class="city-h1">Paris</span></h1>
-  <section class="content">
+  <aside class="menu">
+    <div class="change">
+      <h3>Changer de ville</h3>
 
-    <div class="loader-container">
-      <div class="loader">
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-      </div>
+      <datalist id="cities"></datalist>
+
+      <input type="text" placeholder="Ville ou code postal" class="change-city" list="cities">
+    </div>
+  </aside>
+
+  <section id="meteo">
+
+    <div class="change-hour">
+      <h1>Prévisions météo pour <span>Paris</span></h1>
+      <datalist id="hours">
+        <option value="01:00">
+        <option value="04:00">
+        <option value="07:00">
+        <option value="10:00">
+        <option value="13:00">
+        <option value="16:00">
+        <option value="19:00">
+        <option value="22:00">
+      </datalist>
+      <input type="text" list="hours" placeholder="Changer d'heure" class="hour">
     </div>
 
-    <div id="aujourdhui">
-      <h1 class="section-title auj-title">Aujourd'hui</h1>
+    <div class="forecasts">
+      <div class="today forecast">
+        <h2>Aujourd'hui</h2>
+        <h5>10:00</h5>
 
-      <div class="section-content">
-        <span><i class="fas fa-thermometer-half"></i><span class="temp"></span></span><br>
-        <span><i class="fas fa-tint"></i><span class="precipitacions"></span></span><br>
-        <span><i class="fas fa-wind"></i><span class="vent"></span></span><br>
-        <span><i class="fas fa-water"></i><span class="humidite"></span></span><br>
-        <span><i class="fas fa-compress-alt"></i><span class="pression"></span></span><br>
-        <span class="neige"><i class="fas fa-snowflake"></i>Risques de neige</span>
+          <table>
+            <tbody>
+              <tr>
+                <td colspan="2" class="head"><i class="far fa-sun"></i></td>
+                <td colspan="2" class="head"></td>
+              </tr>
+
+              <tr>
+                <td><i class="fas fa-tint"></i><br><span></span></td>
+                <td><i class="fas fa-wind"></i><br><span></span></td>
+                <td><i class="fas fa-water"></i><br><span></span></td>
+                <td><i class="far fa-compass"></i><br><span></span></td>
+              </tr>
+            </tbody>
+          </table>
+
       </div>
-    </div>
 
-    <div id="demain">
-      <h1 class="section-title demain-title">Demain</h1>
+      <div class="tomorrow forecast">
+        <h2>Demain</h2>
+        <h5>10:00</h5>
 
-      <div class="section-content">
-        <span><i class="fas fa-thermometer-half"></i><span class="temp-demain"></span></span><br>
-        <span><i class="fas fa-tint"></i><span class="precipitacions-demain"></span></span><br>
-        <span><i class="fas fa-wind"></i><span class="vent-demain"></span></span><br>
-        <span><i class="fas fa-water"></i><span class="humidite-demain"></span></span><br>
-        <span><i class="fas fa-compress-alt"></i><span class="pression-demain"></span></span><br>
-        <span class="neige-demain"><i class="fas fa-snowflake"></i>Risques de neige</span>
+          <table>
+            <tbody>
+              <tr>
+                <td colspan="2" class="head"><i class=" fas fa-cloud-sun"></i></td>
+                <td colspan="2" class="head"><span>°C</span></td>
+              </tr>
+
+              <tr>
+                <td><i class="fas fa-tint"></i><br><span></span></td>
+                <td><i class="fas fa-wind"></i><br><span></span></td>
+                <td><i class="fas fa-water"></i><br><span></span></td>
+                <td><i class="far fa-compass"></i><br><span></span></td>
+              </tr>
+            </tbody>
+          </table>
+
       </div>
-    </div>
 
-    <div id="ademain">
-      <h1 class="section-title ademain-title">Après demain</h1>
+      <div class="after-tomorrow forecast">
+        <h2>Après demain</h2>
+        <h5>10:00</h5>
 
-      <div class="section-content">
-        <span><i class="fas fa-thermometer-half"></i><span class="temp-ademain"></span></span><br>
-        <span><i class="fas fa-tint"></i><span class="precipitacions-ademain"></span></span><br>
-        <span><i class="fas fa-wind"></i><span class="vent-ademain"></span></span><br>
-        <span><i class="fas fa-water"></i><span class="humidite-ademain"></span></span><br>
-        <span><i class="fas fa-compress-alt"></i><span class="pression-ademain"></span></span><br>
-        <span class="neige-ademain"><i class="fas fa-snowflake"></i>Risques de neige</span>
+          <table>
+            <tbody>
+              <tr>
+                <td colspan="2" class="head"><i class=" fas fa-cloud-showers-heavy"></i></td>
+                <td colspan="2" class="head"><span>°C</span></td>
+              </tr>
+
+              <tr>
+                <td><i class="fas fa-tint"></i><br><span></span></td>
+                <td><i class="fas fa-wind"></i><br><span></span></td>
+                <td><i class="fas fa-water"></i><br><span></span></td>
+                <td><i class="far fa-compass"></i><br><span></span></td>
+              </tr>
+            </tbody>
+          </table>
+
       </div>
     </div>
   </section>
 
-  <footer>
-    <div class="change">
-      <h3 class="foot">Changer de ville</h3>
-      <input type="text" name="city" value="" placeholder="Entrez votre ville" id="city">
-      <input type="text" name="postcode" value="" placeholder="Entrez votre code postal" id="postcode">
-      <input type="submit" name="submit" value="Ok" id="submit"><br>
-    </div>
-    <div class="cpright">
-      <h5 class="foot">© Damien STÉPHAN</h5><br>
-      <h6 class="foot">Prévisions météo par : <a href="https://www.infoclimat.fr" target="_blank">www.infoclimat.fr</a></h6>
-    </div>
-  </footer>
-
-  <div class="info-box">
-    <i class="fas fa-map-marked-alt marker"></i>
-    <h1>Attention !</h1>
-    <p>La météo actuellement affichée sur cette page est celle de Paris. Vous pouvez à tout momment changer de ville en vous référant au bas de la page.</p>
-    <button class="fas fa-times close-btn">
-    </div>
-
-    <script src="main.js" charset="utf-8"></script>
+    <script src="js/time.js" charset="utf-8"></script>
+    <script src="js/processDatas.js" charset="utf-8"></script>
+    <script src="js/main.js" charset="utf-8"></script>
+    <script src="js/ui.js" charset="utf-8"></script>
   </body>
   </html>
