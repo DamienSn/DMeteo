@@ -31,6 +31,15 @@ body {
   background-attachment: fixed;
 }
 
+a {
+  color: var(--purple);
+  transition: .2s linear;
+}
+
+a:hover {
+  color: var(--light-grey);
+}
+
 header {
   width: 100%;
   display: flex;
@@ -93,7 +102,7 @@ header {
 
 .menu {
   position: fixed;
-  padding: 140px 20px;
+  padding: 140px 20px 10px;
   width: 250px;
   height: 100vh;
   top: 0;
@@ -101,6 +110,9 @@ header {
   background: var(--light-blue);
   transition: .2s linear;
   z-index: 1;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
 }
 
 .menu.active {
@@ -123,6 +135,10 @@ header {
 
 .menu input::placeholder {
   color: white;
+}
+
+.cp-right p {
+  font-size: 12px;
 }
 
 .change-hour {

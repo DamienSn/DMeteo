@@ -10,6 +10,6 @@ window.onscroll = function(e) {
   if (window.pageYOffset > 20) {
     document.querySelector('.menu').style.padding = '20px';
   } else {
-    document.querySelector('.menu').style.padding = '140px 20px';
+    document.querySelector('.menu').style.padding = '140px 20px 10px';
   }
 }
