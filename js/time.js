@@ -1,12 +1,47 @@
+const days = {
+  Mon: 'Lundi',
+  Tue: 'Mardi',
+  Wed: 'Mercredi',
+  Thu: 'Jeudi',
+  Fri: 'Vendredi',
+  Sat: 'Samedi',
+  Sun: 'Dimanche'
+}
+
+const months = {
+  Jan: 'Janvier',
+  Feb: 'Février',
+  Mar: 'Mars',
+  Apr: 'Avril',
+  May: 'Mai',
+  Jun: 'Juin',
+  Jul: 'Juillet',
+  Aug: 'Août',
+  Sep: 'Septembre',
+  Oct: 'Octobre',
+  Nov: 'Novembre',
+  Dec: 'Décembre'
+}
+
 function getDate() {
   let day = new Date();
   let today = new Date();
   let tomorrow = new Date(day.setDate(day.getDate() + 1));
   let afterTomorrow = new Date(day.setDate(day.getDate() + 1));
 
-  document.querySelector('.today h2').textContent = today.toLocaleDateString();
-  document.querySelector('.tomorrow h2').textContent = tomorrow.toLocaleDateString();
-  document.querySelector('.after-tomorrow h2').textContent = afterTomorrow.toLocaleDateString();
+  let todayArray = today.toDateString().split(' ');
+  let todayStr = `${days[todayArray[0]]} ${todayArray[2]} ${months[todayArray[1]]}`;
+
+  let tomorrowArray = tomorrow.toDateString().split(' ');
+  let tomorrowStr = `${days[tomorrowArray[0]]} ${tomorrowArray[2]} ${months[tomorrowArray[1]]}`;
+
+  let aTomorrowArray = afterTomorrow.toDateString().split(' ');
+  let aTomorrowStr = `${days[aTomorrowArray[0]]} ${aTomorrowArray[2]} ${months[aTomorrowArray[1]]}`;
+
+
+  document.querySelector('.today h2').textContent = todayStr;
+  document.querySelector('.tomorrow h2').textContent = tomorrowStr;
+  document.querySelector('.after-tomorrow h2').textContent = aTomorrowStr;
 
   let hour = today.toLocaleTimeString();
 
