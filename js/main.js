@@ -7,10 +7,20 @@ let ll = '?_ll=48.85341,2.3488';
 
 let citiesUrl = 'https://geo.api.gouv.fr/communes';
 
-let coords = navigator.geolocation.getCurrentPosition(pos => {
-  coords = pos;
-  geoloc();
-});
+function $_GET(param) {
+  var vars = {};
+  window.location.href.replace( location.hash, '' ).replace(
+    /[?&]+([^=&]+)=?([^&]*)?/gi, // regexp
+    function( m, key, value ) { // callback
+      vars[key] = value !== undefined ? value : '';
+    }
+  );
+
+  if ( param ) {
+    return vars[param] ? vars[param] : null;
+  }
+  return vars;
+}
 
 async function fetchApi(url) {
   // Date must be : YYYY-MM-DD
@@ -44,11 +54,15 @@ let input = document.querySelector('.hour');
 input.onchange = getDatas;
 
 function geoloc() {
-  let lat = coords.coords.latitude;
-  let long = coords.coords.longitude;
-  ll = `?_ll=${lat},${long}`;
-  document.querySelector('.change-hour h1 span').textContent = 'ma position';
-  getDatas();
+  let coords = navigator.geolocation.getCurrentPosition(pos => {
+    coords = pos;
+    let lat = coords.coords.latitude;
+    let long = coords.coords.longitude;
+    ll = `?_ll=${lat},${long}`;
+    document.querySelector('.change-hour h1 span').textContent = 'ma position';
+    getDatas();
+  });
+
 }
 
 function populateCities() {
@@ -65,13 +79,11 @@ function populateCities() {
 
 populateCities();
 
-let cityInput = document.querySelector('.menu input');
-
-cityInput.onchange = function() {
-  let val = cityInput.value;
+function changeCity(val) {
+  //Val must be : city - postcode
   val = val.split(' - ');
   console.log(val);
-  document.querySelector('.change-hour h1 span').textContent = val[0];
+  document.querySelector('.change-hour h1 span').textContent = capitalize(val[0]);
 
   let coords = [];
 
@@ -83,4 +95,20 @@ cityInput.onchange = function() {
     ll = `?_ll=${coords[0]},${coords[1]}`;
     getDatas();
   })
+}
+
+let cityInput = document.querySelector('.menu input');
+
+cityInput.onchange = function() {
+  changeCity(cityInput.value)
+}
+
+if($_GET('ville') !== null && $_GET('code') !== null) {
+  changeCity($_GET('ville') + ' - ' + $_GET('code'));
+} else {
+  geoloc();
+}
+
+function capitalize(str)  {
+  return str[0].toUpperCase() + str.slice(1);
 }

@@ -22,13 +22,13 @@ function process(datas) {
 
   console.log(dates);
 
-  let td = document.querySelectorAll('.today td span');
+  let td = document.querySelectorAll('.today-forecast');
 
   document.querySelectorAll('.today td')[1].innerHTML = Math.floor(datas[today + ' ' + hour].temperature.sol - 273.15) + '<span>°C</span>';
-  td[1].textContent = datas[today + ' ' + hour].pluie + ' mm';
-  td[2].textContent = datas[today + ' ' + hour].vent_moyen['10m'] + ' km/h';
-  td[3].textContent = datas[today + ' ' + hour].humidite['2m'] + ' %';
-  td[4].textContent = Math.floor(datas[today + ' ' + hour].pression.niveau_de_la_mer / 100) + ' hPa';
+  td[0].textContent = datas[today + ' ' + hour].pluie + ' mm';
+  td[1].textContent = datas[today + ' ' + hour].vent_moyen['10m'] + ' km/h';
+  td[2].textContent = datas[today + ' ' + hour].humidite['2m'] + ' %';
+  td[3].textContent = Math.floor(datas[today + ' ' + hour].pression.niveau_de_la_mer / 100) + ' hPa';
 
   td = document.querySelectorAll('.tomorrow td span');
 
