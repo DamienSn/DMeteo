@@ -3,10 +3,6 @@ Voici le code source de mon site de prévisions météo: https://damiensn.github
 
 Merci à www.infoclimat.fr pour leurs prévisions météo!
 
-# Accéder directement aux prévisions pour mon emplacement
-Pour accéder directement aux prévisions de votre emplacement, utilisez cette url :
-https://damiensn.github.io/DMeteo?pos
-
 # Accéder directement aux prévisions d'une ville
 Pour accéder directement aux prévisions d'une, utilisez une url comme celle ci :
 https://damiensn.github.io/DMeteo?ville={VOTRE-VILLE}&code={VOTRE-CODE-POSTAL}
