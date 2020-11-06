@@ -215,7 +215,7 @@ td.head i {
 
 @media screen and (max-width: 500px) {
   .logo {
-    width: 75px;
+    display: none;
   }
 
   .brand h1 {
