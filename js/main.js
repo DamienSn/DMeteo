@@ -1,5 +1,3 @@
-let proxy = 'https://cors-anywhere.herokuapp.com/';
-
 let apiKey = '&_auth=ARtRRg9xXH5Sf1RjUiRQeVE5VWBeKFN0CnZQM1s%2BBXhSOVEwVTVRNwNtVCkBLgE3WHUFZggzUGBUP1UtXS9TMgFrUT0PZFw7Uj1UMVJ9UHtRf1U0Xn5TdApuUD9bKAVnUjNRM1UoUTIDa1Q1AS8BNFhpBWEIKFB3VDZVNF0wUzQBZ1E0D2VcNlI%2BVD9SfVB7UWdVY14wU2gKaVAwWz8FMFJkUWFVPlE0A2VUNwEvATVYaAVtCDBQbVQ0VTZdNFMvAX1RTA8fXCNSfVR0UjdQIlF%2FVWBeP1M%2F&_c=894c7a363235f0d1904ee2237eec8d41';
 
 let baseUrl = 'https://www.infoclimat.fr/public-api/gfs/json';
@@ -43,7 +41,7 @@ async function fetchApi(url) {
 }
 
 async function getDatas() {
-  let meteo = await fetchApi(proxy + baseUrl + ll + apiKey);
+  let meteo = await fetchApi(baseUrl + ll + apiKey);
   process(meteo);
 }
 
@@ -66,7 +64,7 @@ function geoloc() {
 }
 
 function populateCities() {
-  let list = fetch(proxy + citiesUrl)
+  let list = fetch(citiesUrl)
   .then(res => res.json())
   .then(json => {
     json.forEach((item, i) => {
@@ -87,7 +85,7 @@ function changeCity(val) {
 
   let coords = [];
 
-  let res = fetch(`${proxy}${citiesUrl}?nom=${val[0]}&codePostal=${val[1]}&format=geojson`)
+  let res = fetch(`${citiesUrl}?nom=${val[0]}&codePostal=${val[1]}&format=geojson`)
   .then(res => res.json())
   .then(json => {
     coords.push(json.features[0].geometry.coordinates[1]);
