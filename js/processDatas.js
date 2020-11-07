@@ -48,27 +48,51 @@ function process(datas) {
 
   if(datas[today + ' ' + hour].pluie == 0) {
     document.querySelector('.today td i').setAttribute('class', icons.sunny)
-  } else if(datas[today + ' ' + hour].pluie > 0 && datas[today + ' ' + hour].pluie < 1) {
+  }
+  if(datas[today + ' ' + hour].pluie > 0 && datas[today + ' ' + hour].pluie < 1) {
     document.querySelector('.today td i').setAttribute('class', icons.cloudy)
-  } else if(datas[today + ' ' + hour].pluie > 1) {
+  }
+  if(datas[today + ' ' + hour].pluie > 1) {
     document.querySelector('.today td i').setAttribute('class', icons.rain)
+  }
+  if(datas[today + ' ' + hour].vent_moyen['10m'] > 45) {
+    document.querySelector('.today td i').setAttribute('class', icons.wind)
+  }
+  if(datas[today + ' ' + hour].risque_neige === 'oui') {
+    document.querySelector('.today td i').setAttribute('class', icons.snow)
   }
 
   if(datas[tomorrow + ' ' + hour].pluie == 0) {
     document.querySelector('.tomorrow td i').setAttribute('class', icons.sunny)
-  } else if(datas[tomorrow + ' ' + hour].pluie > 0 && datas[tomorrow + ' ' + hour].pluie < 1) {
+  }
+  if(datas[tomorrow + ' ' + hour].pluie > 0 && datas[tomorrow + ' ' + hour].pluie < 1) {
     document.querySelector('.tomorrow td i').setAttribute('class', icons.cloudy)
-  } else if(datas[tomorrow + ' ' + hour].pluie > 1) {
+  }
+  if(datas[tomorrow + ' ' + hour].pluie > 1) {
     document.querySelector('.tomorrow td i').setAttribute('class', icons.rain)
+  }
+  if(datas[tomorrow + ' ' + hour].vent_moyen['10m'] > 45) {
+    document.querySelector('.tomorrow td i').setAttribute('class', icons.wind)
+  }
+  if(datas[tomorrow + ' ' + hour].rique_neige === 'oui') {
+    document.querySelector('.tomorrow td i').setAttribute('class', icons.snow)
   }
 
 
   if(datas[afterTomorrow + ' ' + hour].pluie === 0) {
     document.querySelector('.after-tomorrow td i').setAttribute('class', icons.sunny)
-  } else if(datas[afterTomorrow + ' ' + hour].pluie > 0 && datas[afterTomorrow + ' ' + hour].pluie < 1) {
+  }
+  if(datas[afterTomorrow + ' ' + hour].pluie > 0 && datas[afterTomorrow + ' ' + hour].pluie < 1) {
     document.querySelector('.after-tomorrow td i').setAttribute('class', icons.cloudy)
-  } else if(datas[afterTomorrow + ' ' + hour].pluie > 1) {
+  }
+  if(datas[afterTomorrow + ' ' + hour].pluie > 1) {
     document.querySelector('.after-tomorrow td i').setAttribute('class', icons.rain)
+  }
+  if(datas[afterTomorrow + ' ' + hour].vent_moyen['10m'] > 45) {
+    document.querySelector('.after-tomorrow td i').setAttribute('class', icons.wind)
+  }
+  if(datas[afterTomorrow + ' ' + hour].rique_neige === 'oui') {
+    document.querySelector('.after-tomorrow td i').setAttribute('class', icons.snow)
   }
 
 
