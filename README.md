@@ -9,4 +9,4 @@ https://damiensn.github.io/DMeteo?ville={VOTRE-VILLE}&code={VOTRE-CODE-POSTAL}
 https://damiensn.github.io/DMeteo?ville=verfeil&code=31590
 
 # Changer de ville
-Pour changer de ville, entrez juste le nom de la ville et son code postal daes champs prévus à cet effet au bas de la page.
+Pour changer de ville, entrez juste le nom de la ville et son code postal dans les champs prévus à cet effet au bas de la page.
