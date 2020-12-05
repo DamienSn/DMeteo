@@ -236,3 +236,71 @@ td.head i {
     width: 50px;
   }
 }
+
+i {
+  position: relative;
+}
+
+.tooltip {
+    font-family: "Source Sans Pro", sans-serif;
+    font-weight: normal;
+    position: absolute;
+    background: var(--light-blue);
+    padding: 10px;
+    color: #f1f1f1;
+    font-size: 20px;
+    top: -55px;
+    left: -25px;
+    opacity: 0;
+    pointer-events: none;
+    border-radius: 5px;
+}
+
+.tooltip::after, .tooltip::before {
+    content: "";
+    bottom: -20px;
+    left: 50%;
+    border: solid transparent;
+    height: 0;
+    width: 0;
+    position: absolute;
+}
+
+.tooltip::after {
+    border-top-color: var(--light-blue);
+    border-width: 10px;
+    margin-left: -10px;
+}
+
+i.fas.fa-tint:hover .tooltip {
+  transition: .1s linear;
+  opacity: 1;
+}
+
+i.fas.fa-wind .tooltip {
+  width: 150px;
+  left: -68px;
+}
+
+i.fas.fa-wind:hover .tooltip {
+  transition: .1s linear;
+  opacity: 1;
+}
+
+i.fas.fa-water .tooltip {
+  left: -40px;
+}
+
+i.fas.fa-water:hover .tooltip {
+  transition: .1s linear;
+  opacity: 1;
+}
+
+i.far.fa-compass .tooltip {
+  left: -37px;
+}
+
+i.far.fa-compass:hover .tooltip {
+  transition: .1s linear;
+  opacity: 1;
+}

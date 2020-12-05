@@ -30,21 +30,21 @@ function process(datas) {
   td[2].textContent = datas[today + ' ' + hour].humidite['2m'] + ' %';
   td[3].textContent = Math.floor(datas[today + ' ' + hour].pression.niveau_de_la_mer / 100) + ' hPa';
 
-  td = document.querySelectorAll('.tomorrow td span');
+  td = document.querySelectorAll('.tomorrow-forecast');
 
   document.querySelectorAll('.tomorrow td')[1].innerHTML = Math.floor(datas[tomorrow + ' ' + hour].temperature.sol - 273.15) + '<span>°C</span>';
-  td[1].textContent = datas[tomorrow + ' ' + hour].pluie + ' mm';
-  td[2].textContent = datas[tomorrow + ' ' + hour].vent_moyen['10m'] + ' km/h';
-  td[3].textContent = datas[tomorrow + ' ' + hour].humidite['2m'] + ' %';
-  td[4].textContent = Math.floor(datas[tomorrow + ' ' + hour].pression.niveau_de_la_mer / 100) + ' hPa';
+  td[0].textContent = datas[tomorrow + ' ' + hour].pluie + ' mm';
+  td[1].textContent = datas[tomorrow + ' ' + hour].vent_moyen['10m'] + ' km/h';
+  td[2].textContent = datas[tomorrow + ' ' + hour].humidite['2m'] + ' %';
+  td[3].textContent = Math.floor(datas[tomorrow + ' ' + hour].pression.niveau_de_la_mer / 100) + ' hPa';
 
-  td = document.querySelectorAll('.after-tomorrow td span');
+  td = document.querySelectorAll('.after-tomorrow-forecast');
 
   document.querySelectorAll('.after-tomorrow td')[1].innerHTML = Math.floor(datas[afterTomorrow + ' ' + hour].temperature.sol - 273.15) + '<span>°C</span>';
-  td[1].textContent = datas[afterTomorrow + ' ' + hour].pluie + ' mm';
-  td[2].textContent = datas[afterTomorrow + ' ' + hour].vent_moyen['10m'] + ' km/h';
-  td[3].textContent = datas[afterTomorrow + ' ' + hour].humidite['2m'] + ' %';
-  td[4].textContent = Math.floor(datas[afterTomorrow + ' ' + hour].pression.niveau_de_la_mer / 100) + ' hPa';
+  td[0].textContent = datas[afterTomorrow + ' ' + hour].pluie + ' mm';
+  td[1].textContent = datas[afterTomorrow + ' ' + hour].vent_moyen['10m'] + ' km/h';
+  td[2].textContent = datas[afterTomorrow + ' ' + hour].humidite['2m'] + ' %';
+  td[3].textContent = Math.floor(datas[afterTomorrow + ' ' + hour].pression.niveau_de_la_mer / 100) + ' hPa';
 
   if(datas[today + ' ' + hour].pluie == 0) {
     document.querySelector('.today td i').setAttribute('class', icons.sunny)

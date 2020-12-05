@@ -42,11 +42,11 @@ async function fetchApi(url) {
 
 async function getDatas() {
   let meteo = await fetchApi(baseUrl + ll + apiKey);
-  try {
+  // try {
     process(meteo);
-  } catch (e) {
-    alert('Un problème est survenu... Veuillez réessayer plus tard.\nSi le probleme persiste, merci de créer un rapport de bug ici :\nhttps://github.com/DamienSn/DMeteo/issues')
-  }
+  // } catch (e) {
+  //   alert('Un problème est survenu... Veuillez réessayer plus tard.\nSi le probleme persiste, merci de créer un rapport de bug ici :\nhttps://github.com/DamienSn/DMeteo/issues')
+  // }
 }
 
 getDatas();
@@ -102,8 +102,10 @@ function changeCity(val) {
 let cityInput = document.querySelector('.menu input');
 
 cityInput.onchange = function() {
-  changeCity(cityInput.value)
-}
+  changeCity(cityInput.value);
+  document.querySelector('.menu').classList.remove('active');
+  document.querySelector('.menu-toggler').classList.remove('active');
+};
 
 if($_GET('ville') !== null && $_GET('code') !== null) {
   changeCity($_GET('ville') + ' - ' + $_GET('code'));

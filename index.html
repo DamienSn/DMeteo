@@ -46,14 +46,14 @@
     <div class="change-hour">
       <h1>Prévisions météo pour <span>Paris</span></h1>
       <datalist id="hours">
-        <option value="01:00">
-        <option value="04:00">
-        <option value="07:00">
-        <option value="10:00">
-        <option value="13:00">
-        <option value="16:00">
-        <option value="19:00">
-        <option value="22:00">
+        <option value="01:00"></option>
+        <option value="04:00"></option>
+        <option value="07:00"></option>
+        <option value="10:00"></option>
+        <option value="13:00"></option>
+        <option value="16:00"></option>
+        <option value="19:00"></option>
+        <option value="22:00"></option>
       </datalist>
       <input type="text" list="hours" placeholder="Changer d'heure" class="hour">
     </div>
@@ -63,21 +63,29 @@
         <h2>Aujourd'hui</h2>
         <h5>10:00</h5>
 
-          <table>
-            <tbody>
-              <tr>
-                <td colspan="2" class="head"><i class="far fa-sun"></i></td>
-                <td colspan="2" class="head"></td>
-              </tr>
+        <table>
+          <tbody>
+            <tr>
+              <td colspan="2" class="head"><i class="far fa-sun"></i></td>
+              <td colspan="2" class="head"></td>
+            </tr>
 
-              <tr>
-                <td><i class="fas fa-tint"></i><br><span class="today-forecast"></span></td>
-                <td><i class="fas fa-wind"></i><br><span class="today-forecast"></span></td>
-                <td><i class="fas fa-water"></i><br><span class="today-forecast"></span></td>
-                <td><i class="far fa-compass"></i><br><span class="today-forecast"></span></td>
-              </tr>
-            </tbody>
-          </table>
+            <tr>
+              <td><i class="fas fa-tint"><span class="tooltip">Pluie</span></i>
+                <br><span class="today-forecast"></span>
+              </td>
+              <td><i class="fas fa-wind"><span class="tooltip">Vitesse du vent</span></i>
+                <br><span class="today-forecast"></span>
+              </td>
+              <td><i class="fas fa-water"><span class="tooltip">Humidité</span></i>
+                <br><span class="today-forecast"></span>
+              </td>
+              <td><i class="far fa-compass"><span class="tooltip">Pression</span></i>
+                <br><span class="today-forecast"></span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
 
       </div>
 
@@ -85,21 +93,30 @@
         <h2>Demain</h2>
         <h5>10:00</h5>
 
-          <table>
-            <tbody>
-              <tr>
-                <td colspan="2" class="head"><i class=" fas fa-cloud-sun"></i></td>
-                <td colspan="2" class="head"><span>°C</span></td>
-              </tr>
+        <table>
+          <tbody>
+            <tr>
+              <td colspan="2" class="head"><i class=" fas fa-cloud-sun"></i></td>
+              <td colspan="2" class="head"><span>°C</span>
+              </td>
+            </tr>
 
-              <tr>
-                <td><i class="fas fa-tint"></i><br><span></span></td>
-                <td><i class="fas fa-wind"></i><br><span></span></td>
-                <td><i class="fas fa-water"></i><br><span></span></td>
-                <td><i class="far fa-compass"></i><br><span></span></td>
-              </tr>
-            </tbody>
-          </table>
+            <tr>
+              <td><i class="fas fa-tint"><span class="tooltip">Pluie</span></i>
+                <br><span class="tomorrow-forecast"></span>
+              </td>
+              <td><i class="fas fa-wind"><span class="tooltip">Vitesse du vent</span></i>
+                <br><span class="tomorrow-forecast"></span>
+              </td>
+              <td><i class="fas fa-water"><span class="tooltip">Humidité</span></i>
+                <br><span class="tomorrow-forecast"></span>
+              </td>
+              <td><i class="far fa-compass"><span class="tooltip">Pression</span></i>
+                <br><span class="tomorrow-forecast"></span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
 
       </div>
 
@@ -107,29 +124,37 @@
         <h2>Après demain</h2>
         <h5>10:00</h5>
 
-          <table>
-            <tbody>
-              <tr>
-                <td colspan="2" class="head"><i class=" fas fa-cloud-showers-heavy"></i></td>
-                <td colspan="2" class="head"><span>°C</span></td>
-              </tr>
+        <table>
+          <tbody>
+            <tr>
+              <td colspan="2" class="head"><i class=" fas fa-cloud-showers-heavy"></i></td>
+              <td colspan="2" class="head"><span>°C</span></td>
+            </tr>
 
-              <tr>
-                <td><i class="fas fa-tint"></i><br><span></span></td>
-                <td><i class="fas fa-wind"></i><br><span></span></td>
-                <td><i class="fas fa-water"></i><br><span></span></td>
-                <td><i class="far fa-compass"></i><br><span></span></td>
-              </tr>
-            </tbody>
-          </table>
+            <tr>
+              <td><i class="fas fa-tint"><span class="tooltip">Pluie</span></i>
+                <br><span class="after-tomorrow-forecast"></span>
+              </td>
+              <td><i class="fas fa-wind"><span class="tooltip">Vitesse du vent</span></i>
+                <br><span class="after-tomorrow-forecast"></span>
+              </td>
+              <td><i class="fas fa-water"><span class="tooltip">Humidité</span></i>
+                <br><span class="after-tomorrow-forecast"></span>
+              </td>
+              <td><i class="far fa-compass"><span class="tooltip">Pression</span></i>
+                <br><span class="after-tomorrow-forecast"></span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
 
       </div>
     </div>
   </section>
 
-    <script src="js/time.js" charset="utf-8"></script>
-    <script src="js/processDatas.js" charset="utf-8"></script>
-    <script src="js/main.js" charset="utf-8"></script>
-    <script src="js/ui.js" charset="utf-8"></script>
-  </body>
-  </html>
+  <script src="js/time.js" charset="utf-8"></script>
+  <script src="js/processDatas.js" charset="utf-8"></script>
+  <script src="js/main.js" charset="utf-8"></script>
+  <script src="js/ui.js" charset="utf-8"></script>
+</body>
+</html>
