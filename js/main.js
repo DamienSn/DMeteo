@@ -42,11 +42,11 @@ async function fetchApi(url) {
 
 async function getDatas() {
   let meteo = await fetchApi(baseUrl + ll + apiKey);
-  // try {
+  try {
     process(meteo);
-  // } catch (e) {
-  //   alert('Un problème est survenu... Veuillez réessayer plus tard.\nSi le probleme persiste, merci de créer un rapport de bug ici :\nhttps://github.com/DamienSn/DMeteo/issues')
-  // }
+  } catch (e) {
+    alert('Un problème est survenu... Veuillez réessayer plus tard.\nSi le probleme persiste, merci de créer un rapport de bug ici :\nhttps://github.com/DamienSn/DMeteo/issues')
+  }
 }
 
 getDatas();
