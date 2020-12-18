@@ -3,7 +3,7 @@
   "short_name": "DMeteo",
   "theme_color": "rgb(52, 152, 219)",
   "background": "#fff",
-  "start_url": "/",
+  "start_url": "/DMeteo/",
   "display": "fullscreen",
   "author": "Damien STEPHAN",
   "icons": [{
