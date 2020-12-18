@@ -5,6 +5,7 @@
   "background": "#fff",
   "start_url": "/",
   "display": "fullscreen",
+  "author": "Damien STEPHAN",
   "icons": [{
     "src": "Icones/App/48.png",
     "sizes": "48x48",
