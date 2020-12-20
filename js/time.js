@@ -92,7 +92,6 @@ function getHour(def) {
   } else {
     if (acceptedValues.indexOf(inputVal) !== -1) {
       console.log('Hour setted at ' + inputVal + ' by user.');
-      changeDisplayedHour(inputVal + ':00');
       return inputVal + ':00';
     } else {
       document.querySelector('.hour').value = '';
@@ -102,10 +101,10 @@ function getHour(def) {
 
 function changeDisplayedHour(val) {
   let displayed = document.querySelectorAll('.forecast h5');
-  displayed.forEach((h5, i) => {
-    h5.textContent = val.slice(0, 5);
-  });
+    displayed.forEach((h5, i) => {
+      h5.textContent = val.slice(0, 5);
+    });
 
-}
+  }
 
 getDate();

@@ -40,20 +40,27 @@ async function fetchApi(url) {
   return res;
 }
 
-async function getDatas() {
+async function getDatas(callback) {
   let meteo = await fetchApi(baseUrl + ll + apiKey);
-  try {
-    process(meteo);
-  } catch (e) {
-    alert('Un problème est survenu... Veuillez réessayer plus tard.\nSi le probleme persiste, merci de créer un rapport de bug ici :\nhttps://github.com/DamienSn/DMeteo/issues')
-  }
+  // try {
+    callback(meteo)
+  // } catch (e) {
+  //   alert('Un problème est survenu... Veuillez réessayer plus tard.\nSi le probleme persiste, merci de créer un rapport de bug ici :\nhttps://github.com/DamienSn/DMeteo/issues')
+  // }
 }
 
-getDatas();
+getDatas(process);
 
 let input = document.querySelector('.hour');
 
-input.onchange = getDatas;
+input.onchange = function () {
+  let dates = getDate()
+  if (parseInt(input.value.slice(0,2)) >= new Date().getHours()) {
+    getDatas(process);
+  } else {
+    getDatas(change);
+  }
+}
 
 function geoloc() {
   let coords = navigator.geolocation.getCurrentPosition(pos => {
@@ -62,7 +69,7 @@ function geoloc() {
     let long = coords.coords.longitude;
     ll = `?_ll=${lat},${long}`;
     document.querySelector('.change-hour h1 span').textContent = 'ma position';
-    getDatas();
+    getDatas(process);
   });
 
 }
