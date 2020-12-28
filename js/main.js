@@ -102,14 +102,16 @@ function changeCity(val) {
     coords.push(json.features[0].geometry.coordinates[1]);
     coords.push(json.features[0].geometry.coordinates[0]);
     ll = `?_ll=${coords[0]},${coords[1]}`;
-    getDatas();
+    getDatas(process);
   })
 }
 
 let cityInput = document.querySelector('.menu input');
 
 cityInput.onchange = function() {
-  changeCity(cityInput.value);
+  let val = cityInput.value;
+  document.querySelector('.hour').value = "";
+  changeCity(val);
   document.querySelector('.menu').classList.remove('active');
   document.querySelector('.menu-toggler').classList.remove('active');
 };
