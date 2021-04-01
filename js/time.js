@@ -77,14 +77,14 @@ function getHour(def) {
     def = def.slice(0,2);
     def = parseInt(def);
 
-    def<=4 ? def = '01:00:00' : def = def;
-    def>=4 && def<7 ? def = '04:00:00' : def = def;
-    def>=7 && def<10 ? def = '07:00:00' : def = def;
-    def>=10 && def<13 ? def = '10:00:00' : def = def;
-    def>=13 && def<16 ? def = '13:00:00' : def = def;
-    def>=16 && def<19 ? def = '16:00:00' : def = def;
-    def>=19 && def<22 ? def = '19:00:00' : def = def;
-    def>=22 ? def = '22:00:00' : def = def;
+    def<=5 ? def = '02:00:00' : def = def;
+    def>=5 && def<8 ? def = '05:00:00' : def = def;
+    def>=8 && def<11 ? def = '08:00:00' : def = def;
+    def>=11 && def<14 ? def = '11:00:00' : def = def;
+    def>=14 && def<17 ? def = '14:00:00' : def = def;
+    def>=17 && def<20 ? def = '17:00:00' : def = def;
+    def>=20 && def<23 ? def = '20:00:00' : def = def;
+    def>=23 ? def = '23:00:00' : def = def;
 
     changeDisplayedHour(def)
 
