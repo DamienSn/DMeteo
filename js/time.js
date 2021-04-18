@@ -23,7 +23,7 @@ const months = {
   Dec: 'Décembre'
 }
 
-function getDate() {
+export function getDate() {
   let day = new Date();
   let today = new Date();
   let tomorrow = new Date(day.setDate(day.getDate() + 1));

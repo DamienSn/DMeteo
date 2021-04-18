@@ -1,3 +1,5 @@
+import {getDate} from './time.js';
+
 const icons = {
   bolt: 'fas fa-bolt',
   wind: 'fas fa-wind',
@@ -10,7 +12,7 @@ const icons = {
   snow: 'fas fa-snowflake'
 }
 
-function process(datas) {
+export function process(datas) {
   if (document.querySelector('.hour').value !== '') {
     let displayed = document.querySelectorAll('.forecast h5');
       displayed.forEach((h5, i) => {
@@ -105,7 +107,7 @@ function process(datas) {
 
 }
 
-function change(datas) {
+export function change(datas) {
   let displayed = document.querySelectorAll('.forecast h5');
   displayed[1].textContent = document.querySelector('.hour').value;
   displayed[2].textContent = document.querySelector('.hour').value
