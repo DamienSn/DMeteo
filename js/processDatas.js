@@ -12,6 +12,10 @@ const icons = {
   snow: 'fas fa-snowflake'
 }
 
+/**
+ * Process meteo datas
+ * @param {Object} datas Datas to process
+ */
 export function process(datas) {
   if (document.querySelector('.hour').value !== '') {
     let displayed = document.querySelectorAll('.forecast h5');
@@ -107,6 +111,10 @@ export function process(datas) {
 
 }
 
+/**
+ * Process datas for an hour inferior of the local hour
+ * @param {Object} datas Datas to process
+ */
 export function change(datas) {
   let displayed = document.querySelectorAll('.forecast h5');
   displayed[1].textContent = document.querySelector('.hour').value;

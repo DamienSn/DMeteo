@@ -23,6 +23,10 @@ const months = {
   Dec: 'Décembre'
 }
 
+/**
+ * Get the date
+ * @returns {array} Hour, today, tommorow, after-tomorrow
+ */
 export function getDate() {
   let day = new Date();
   let today = new Date();
@@ -69,6 +73,11 @@ export function getDate() {
 
 const acceptedValues = ['01:00', '04:00', '07:00', '10:00', '13:00', '16:00', '19:00', '22:00']
 
+/**
+ * Get the hour that the user typed on input or the current hour
+ * @param {number} def Default hour
+ * @returns 
+ */
 function getHour(def) {
   let inputVal = document.querySelector('.hour').value;
 
@@ -99,6 +108,10 @@ function getHour(def) {
   }
 }
 
+/**
+ * Change the displayed forecats hour
+ * @param {string} val The hour to display
+ */
 function changeDisplayedHour(val) {
   let displayed = document.querySelectorAll('.forecast h5');
     displayed.forEach((h5, i) => {

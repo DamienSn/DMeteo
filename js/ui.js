@@ -9,7 +9,9 @@ menuToggler.onclick = function() {
 const containerSlot = document.querySelector('.slot');
 const emojis = ['⭐', '🌟']
 
-
+/**
+ * This function creates confettis on DOM
+ */
 export function fiesta() {
   for (let i = 0; i<50; i++) {
     const confetti = document.createElement('div');
@@ -20,6 +22,9 @@ export function fiesta() {
   animateConfettis();
 }
 
+/**
+ * Animate confettis
+ */
 function animateConfettis() {
   const TLCONF = gsap.timeline()
 
