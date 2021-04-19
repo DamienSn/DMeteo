@@ -76,7 +76,7 @@ const acceptedValues = ['01:00', '04:00', '07:00', '10:00', '13:00', '16:00', '1
 /**
  * Get the hour that the user typed on input or the current hour
  * @param {number} def Default hour
- * @returns 
+ * @returns def
  */
 function getHour(def) {
   let inputVal = document.querySelector('.hour').value;
