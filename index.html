@@ -34,8 +34,21 @@
 
       <datalist id="cities"></datalist>
 
-      <input type="text" placeholder="Ville ou code postal" class="change-city" list="cities">
+      <div class="controls">
+        <input type="text" placeholder="Ville ou code postal" class="change-city" list="cities">
+        <button id="add-to-favorites">
+          <i class="far fa-star"></i>
+        </button>
+        <div class="slot"></div>
+      </div>
     </div>
+
+    <div class="favorites">
+      <h3>Favoris</h3>
+      <ul>
+      </ul>
+    </div>
+
     <div class="cp-right">
       <h5>Créé par Damien STÉPHAN</h5>
       <p>Prévisions météo par <a href="https://ww.infoclimat.fr">infoclimat</a></p>
@@ -161,6 +174,10 @@
   </script>
 
   <script src="js/main.js" charset="utf-8" type="module"></script>
-  <script src="js/ui.js" charset="utf-8"></script>
+  <script src="js/favorites.js" charset="utf-8" type="module"></script>
+  <script src="js/ui.js" charset="utf-8" type="module"></script>
+
+  <!-- GSAP -->
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.1/gsap.min.js' integrity='sha512-cdV6j5t5o24hkSciVrb8Ki6FveC2SgwGfLE31+ZQRHAeSRxYhAQskLkq3dLm8ZcWe1N3vBOEYmmbhzf7NTtFFQ==' crossorigin='anonymous'></script>
 </body>
 </html>
