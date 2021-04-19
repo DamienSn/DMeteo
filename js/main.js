@@ -74,7 +74,6 @@ getDatas(process);
 let input = document.querySelector(".hour");
 
 input.onchange = function () {
-  let dates = getDate();
   if (parseInt(input.value.slice(0, 2)) >= new Date().getHours()) {
     getDatas(process);
   } else {
